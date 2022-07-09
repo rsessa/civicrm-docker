@@ -21,10 +21,14 @@ RUN DEBIAN_FRONTEND="noninteractive" apt-get update \
     libxml2-dev \
     mariadb-client \
     ssmtp
+    
+COPY docker-php-ext-get /usr/local/bin/
 
 # Install additional PHP extentions
 RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
-  && docker-php-ext-install imap intl mcrypt mysqli soap
+  && docker-php-ext-install imap intl mysqli soap \
+  && docker-php-ext-get mcrypt 1.0.5 \
+  && docker-php-ext-install mcrypt
 
 # Install ssmtp
 COPY ssmtp.conf /etc/ssmtp/ssmtp.conf
