@@ -26,8 +26,8 @@ COPY docker-php-ext-get /usr/local/bin/
 
 # Install additional PHP extentions
 RUN docker-php-source extract \
-  && docker-php-ext-install imap \
   && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
+  && docker-php-ext-install imap \
   && docker-php-ext-install intl \
   && docker-php-ext-install mysqli \
   && docker-php-ext-install soap \
