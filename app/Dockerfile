@@ -23,6 +23,7 @@ RUN DEBIAN_FRONTEND="noninteractive" apt-get update \
     ssmtp
     
 COPY docker-php-ext-get /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-php-ext-get
 
 # Install additional PHP extentions
 RUN docker-php-source extract \
