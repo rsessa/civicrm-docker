@@ -1,7 +1,7 @@
 # Docker - Drupal+CiviCRM
 #
 # Use official Drupal7+FPM as base image for build
-FROM drupal:7-fpm
+FROM drupal:9.4.2-fpm
 
 # VERSION 0.0.1
 MAINTAINER William Hale <salt@snowdrift.coop>
@@ -44,7 +44,7 @@ RUN curl -fSL http://files.drush.org/drush.phar -o /usr/local/bin/drush \
 # COPY civicrm.drush.inc /usr/share/drush/commands/civicrm.drush.inc
 
 # Download CiviCRM
-ENV CIVICRM_VERSION 4.7.17
+ENV CIVICRM_VERSION 5.51.0
 RUN curl -fSL "https://download.civicrm.org/civicrm-${CIVICRM_VERSION}-drupal.tar.gz" -o /var/www/civicrm.tar.gz
 
 # Install default error pages
